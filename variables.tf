@@ -246,3 +246,12 @@ variable "system_controls" {
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
   default     = null
 }
+
+variable "extra_hosts" {
+  type        = list(object({
+    Hostname  = string
+    IpAddress = string
+  }))
+  description = "A list of HostEntry objects which map a Hostname to an IpAddress, to be added to the container's /etc/hosts file."
+  default     = []
+}
